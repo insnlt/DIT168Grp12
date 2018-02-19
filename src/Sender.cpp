@@ -1,6 +1,14 @@
-#include "Sender.hpp"
+#include <cstdint>
+#include <chrono>
+#include <iostream>
+#include <string>
 
-void Sender::msg() {
+#include "cluon/OD4Session.hpp"
+#include "cluon/Envelope.hpp"
+#include "Sender.hpp"
+#include "messages.hpp"
+
+int main(int /*argc*/, char** /*argv*/) {
 
     cluon::OD4Session od4(111,
         [](cluon::data::Envelope &&envelope) noexcept {});
