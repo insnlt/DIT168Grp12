@@ -8,6 +8,7 @@ In this project we will create a Smart Miniature Vehicle where the car will be a
 We will use branching in this project. The group members will branch out and only push to master with pull request approval from one of the team member. Every commit will be made with comments that describes what was changed.
 
 ##How to clone,build,test:
-
+	
 ##Cloning:
 $ git clone https://github.com/insnlt/DIT168Grp12.git
+Go to the terminal 
