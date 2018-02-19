@@ -111,49 +111,34 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/Prime.dir/rule:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/Prime.dir/rule
-.PHONY : src/CMakeFiles/Prime.dir/rule
+src/CMakeFiles/src-Runner.dir/rule:
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/src-Runner.dir/rule
+.PHONY : src/CMakeFiles/src-Runner.dir/rule
 
 # Convenience name for target.
-Prime: src/CMakeFiles/Prime.dir/rule
+src-Runner: src/CMakeFiles/src-Runner.dir/rule
 
-.PHONY : Prime
+.PHONY : src-Runner
 
 # fast build rule for target.
-Prime/fast:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/build
-.PHONY : Prime/fast
+src-Runner/fast:
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/build
+.PHONY : src-Runner/fast
 
 # Convenience name for target.
-src/CMakeFiles/Recieve.dir/rule:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/Recieve.dir/rule
-.PHONY : src/CMakeFiles/Recieve.dir/rule
+src/CMakeFiles/src.dir/rule:
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/src.dir/rule
+.PHONY : src/CMakeFiles/src.dir/rule
 
 # Convenience name for target.
-Recieve: src/CMakeFiles/Recieve.dir/rule
+src: src/CMakeFiles/src.dir/rule
 
-.PHONY : Recieve
+.PHONY : src
 
 # fast build rule for target.
-Recieve/fast:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/build
-.PHONY : Recieve/fast
-
-# Convenience name for target.
-src/CMakeFiles/Send.dir/rule:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/Send.dir/rule
-.PHONY : src/CMakeFiles/Send.dir/rule
-
-# Convenience name for target.
-Send: src/CMakeFiles/Send.dir/rule
-
-.PHONY : Send
-
-# fast build rule for target.
-Send/fast:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/build
-.PHONY : Send/fast
+src/fast:
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/build
+.PHONY : src/fast
 
 Prime.o: Prime.cpp.o
 
@@ -161,7 +146,7 @@ Prime.o: Prime.cpp.o
 
 # target to build an object file
 Prime.cpp.o:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/Prime.cpp.o
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/Prime.cpp.o
 .PHONY : Prime.cpp.o
 
 Prime.i: Prime.cpp.i
@@ -170,7 +155,7 @@ Prime.i: Prime.cpp.i
 
 # target to preprocess a source file
 Prime.cpp.i:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/Prime.cpp.i
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/Prime.cpp.i
 .PHONY : Prime.cpp.i
 
 Prime.s: Prime.cpp.s
@@ -179,7 +164,7 @@ Prime.s: Prime.cpp.s
 
 # target to generate assembly for a file
 Prime.cpp.s:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/Prime.cpp.s
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/Prime.cpp.s
 .PHONY : Prime.cpp.s
 
 PrimeChecker.o: PrimeChecker.cpp.o
@@ -188,7 +173,8 @@ PrimeChecker.o: PrimeChecker.cpp.o
 
 # target to build an object file
 PrimeChecker.cpp.o:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/PrimeChecker.cpp.o
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/PrimeChecker.cpp.o
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/PrimeChecker.cpp.o
 .PHONY : PrimeChecker.cpp.o
 
 PrimeChecker.i: PrimeChecker.cpp.i
@@ -197,7 +183,8 @@ PrimeChecker.i: PrimeChecker.cpp.i
 
 # target to preprocess a source file
 PrimeChecker.cpp.i:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/PrimeChecker.cpp.i
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/PrimeChecker.cpp.i
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/PrimeChecker.cpp.i
 .PHONY : PrimeChecker.cpp.i
 
 PrimeChecker.s: PrimeChecker.cpp.s
@@ -206,62 +193,36 @@ PrimeChecker.s: PrimeChecker.cpp.s
 
 # target to generate assembly for a file
 PrimeChecker.cpp.s:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/PrimeChecker.cpp.s
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/PrimeChecker.cpp.s
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/PrimeChecker.cpp.s
 .PHONY : PrimeChecker.cpp.s
 
-Reciever.o: Reciever.cpp.o
+TestPrimeChecker.o: TestPrimeChecker.cpp.o
 
-.PHONY : Reciever.o
-
-# target to build an object file
-Reciever.cpp.o:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/Reciever.cpp.o
-.PHONY : Reciever.cpp.o
-
-Reciever.i: Reciever.cpp.i
-
-.PHONY : Reciever.i
-
-# target to preprocess a source file
-Reciever.cpp.i:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/Reciever.cpp.i
-.PHONY : Reciever.cpp.i
-
-Reciever.s: Reciever.cpp.s
-
-.PHONY : Reciever.s
-
-# target to generate assembly for a file
-Reciever.cpp.s:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/Reciever.cpp.s
-.PHONY : Reciever.cpp.s
-
-Sender.o: Sender.cpp.o
-
-.PHONY : Sender.o
+.PHONY : TestPrimeChecker.o
 
 # target to build an object file
-Sender.cpp.o:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/Sender.cpp.o
-.PHONY : Sender.cpp.o
+TestPrimeChecker.cpp.o:
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/TestPrimeChecker.cpp.o
+.PHONY : TestPrimeChecker.cpp.o
 
-Sender.i: Sender.cpp.i
+TestPrimeChecker.i: TestPrimeChecker.cpp.i
 
-.PHONY : Sender.i
+.PHONY : TestPrimeChecker.i
 
 # target to preprocess a source file
-Sender.cpp.i:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/Sender.cpp.i
-.PHONY : Sender.cpp.i
+TestPrimeChecker.cpp.i:
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/TestPrimeChecker.cpp.i
+.PHONY : TestPrimeChecker.cpp.i
 
-Sender.s: Sender.cpp.s
+TestPrimeChecker.s: TestPrimeChecker.cpp.s
 
-.PHONY : Sender.s
+.PHONY : TestPrimeChecker.s
 
 # target to generate assembly for a file
-Sender.cpp.s:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/Sender.cpp.s
-.PHONY : Sender.cpp.s
+TestPrimeChecker.cpp.s:
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/TestPrimeChecker.cpp.s
+.PHONY : TestPrimeChecker.cpp.s
 
 __/messages.o: __/messages.cpp.o
 
@@ -269,8 +230,8 @@ __/messages.o: __/messages.cpp.o
 
 # target to build an object file
 __/messages.cpp.o:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/__/messages.cpp.o
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/__/messages.cpp.o
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/__/messages.cpp.o
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/__/messages.cpp.o
 .PHONY : __/messages.cpp.o
 
 __/messages.i: __/messages.cpp.i
@@ -279,8 +240,8 @@ __/messages.i: __/messages.cpp.i
 
 # target to preprocess a source file
 __/messages.cpp.i:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/__/messages.cpp.i
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/__/messages.cpp.i
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/__/messages.cpp.i
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/__/messages.cpp.i
 .PHONY : __/messages.cpp.i
 
 __/messages.s: __/messages.cpp.s
@@ -289,8 +250,8 @@ __/messages.s: __/messages.cpp.s
 
 # target to generate assembly for a file
 __/messages.cpp.s:
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/__/messages.cpp.s
-	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/__/messages.cpp.s
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/__/messages.cpp.s
+	cd /home/insane/Desktop/project/DIT168Grp12/build && $(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/__/messages.cpp.s
 .PHONY : __/messages.cpp.s
 
 # Help Target
@@ -300,22 +261,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... Prime"
-	@echo "... Recieve"
-	@echo "... Send"
 	@echo "... rebuild_cache"
+	@echo "... src-Runner"
+	@echo "... src"
 	@echo "... Prime.o"
 	@echo "... Prime.i"
 	@echo "... Prime.s"
 	@echo "... PrimeChecker.o"
 	@echo "... PrimeChecker.i"
 	@echo "... PrimeChecker.s"
-	@echo "... Reciever.o"
-	@echo "... Reciever.i"
-	@echo "... Reciever.s"
-	@echo "... Sender.o"
-	@echo "... Sender.i"
-	@echo "... Sender.s"
+	@echo "... TestPrimeChecker.o"
+	@echo "... TestPrimeChecker.i"
+	@echo "... TestPrimeChecker.s"
 	@echo "... __/messages.o"
 	@echo "... __/messages.i"
 	@echo "... __/messages.s"

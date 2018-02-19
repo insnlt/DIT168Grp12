@@ -63,16 +63,14 @@ CMAKE_BINARY_DIR = /home/insane/Desktop/project/DIT168Grp12/build
 # Directory level rules for directory src
 
 # Convenience name for "all" pass in the directory.
-src/all: src/CMakeFiles/Prime.dir/all
-src/all: src/CMakeFiles/Recieve.dir/all
-src/all: src/CMakeFiles/Send.dir/all
+src/all: src/CMakeFiles/src-Runner.dir/all
+src/all: src/CMakeFiles/src.dir/all
 
 .PHONY : src/all
 
 # Convenience name for "clean" pass in the directory.
-src/clean: src/CMakeFiles/Prime.dir/clean
-src/clean: src/CMakeFiles/Recieve.dir/clean
-src/clean: src/CMakeFiles/Send.dir/clean
+src/clean: src/CMakeFiles/src-Runner.dir/clean
+src/clean: src/CMakeFiles/src.dir/clean
 
 .PHONY : src/clean
 
@@ -82,113 +80,76 @@ src/preinstall:
 .PHONY : src/preinstall
 
 #=============================================================================
-# Target rules for target src/CMakeFiles/Prime.dir
+# Target rules for target src/CMakeFiles/src-Runner.dir
 
 # All Build rule for target.
-src/CMakeFiles/Prime.dir/all:
-	$(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/depend
-	$(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles --progress-num=1,2,3 "Built target Prime"
-.PHONY : src/CMakeFiles/Prime.dir/all
+src/CMakeFiles/src-Runner.dir/all:
+	$(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/depend
+	$(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles --progress-num=6,7,8,9,10 "Built target src-Runner"
+.PHONY : src/CMakeFiles/src-Runner.dir/all
 
 # Include target in all.
-all: src/CMakeFiles/Prime.dir/all
+all: src/CMakeFiles/src-Runner.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-src/CMakeFiles/Prime.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/Prime.dir/all
+src/CMakeFiles/src-Runner.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/src-Runner.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles 0
-.PHONY : src/CMakeFiles/Prime.dir/rule
+.PHONY : src/CMakeFiles/src-Runner.dir/rule
 
 # Convenience name for target.
-Prime: src/CMakeFiles/Prime.dir/rule
+src-Runner: src/CMakeFiles/src-Runner.dir/rule
 
-.PHONY : Prime
-
-# clean rule for target.
-src/CMakeFiles/Prime.dir/clean:
-	$(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/clean
-.PHONY : src/CMakeFiles/Prime.dir/clean
+.PHONY : src-Runner
 
 # clean rule for target.
-clean: src/CMakeFiles/Prime.dir/clean
+src/CMakeFiles/src-Runner.dir/clean:
+	$(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/clean
+.PHONY : src/CMakeFiles/src-Runner.dir/clean
+
+# clean rule for target.
+clean: src/CMakeFiles/src-Runner.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target src/CMakeFiles/Recieve.dir
+# Target rules for target src/CMakeFiles/src.dir
 
 # All Build rule for target.
-src/CMakeFiles/Recieve.dir/all:
-	$(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/depend
-	$(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles --progress-num=4,5,6,7 "Built target Recieve"
-.PHONY : src/CMakeFiles/Recieve.dir/all
+src/CMakeFiles/src.dir/all:
+	$(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/depend
+	$(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target src"
+.PHONY : src/CMakeFiles/src.dir/all
 
 # Include target in all.
-all: src/CMakeFiles/Recieve.dir/all
+all: src/CMakeFiles/src.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-src/CMakeFiles/Recieve.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/Recieve.dir/all
+src/CMakeFiles/src.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/src.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles 0
-.PHONY : src/CMakeFiles/Recieve.dir/rule
+.PHONY : src/CMakeFiles/src.dir/rule
 
 # Convenience name for target.
-Recieve: src/CMakeFiles/Recieve.dir/rule
+src: src/CMakeFiles/src.dir/rule
 
-.PHONY : Recieve
-
-# clean rule for target.
-src/CMakeFiles/Recieve.dir/clean:
-	$(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/clean
-.PHONY : src/CMakeFiles/Recieve.dir/clean
+.PHONY : src
 
 # clean rule for target.
-clean: src/CMakeFiles/Recieve.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target src/CMakeFiles/Send.dir
-
-# All Build rule for target.
-src/CMakeFiles/Send.dir/all:
-	$(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/depend
-	$(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles --progress-num=8,9,10,11 "Built target Send"
-.PHONY : src/CMakeFiles/Send.dir/all
-
-# Include target in all.
-all: src/CMakeFiles/Send.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-src/CMakeFiles/Send.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/Send.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles 0
-.PHONY : src/CMakeFiles/Send.dir/rule
-
-# Convenience name for target.
-Send: src/CMakeFiles/Send.dir/rule
-
-.PHONY : Send
+src/CMakeFiles/src.dir/clean:
+	$(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/clean
+.PHONY : src/CMakeFiles/src.dir/clean
 
 # clean rule for target.
-src/CMakeFiles/Send.dir/clean:
-	$(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/clean
-.PHONY : src/CMakeFiles/Send.dir/clean
-
-# clean rule for target.
-clean: src/CMakeFiles/Send.dir/clean
+clean: src/CMakeFiles/src.dir/clean
 
 .PHONY : clean
 

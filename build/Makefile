@@ -111,43 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Prime
+# Target rules for targets named src-Runner
 
 # Build rule for target.
-Prime: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Prime
-.PHONY : Prime
+src-Runner: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 src-Runner
+.PHONY : src-Runner
 
 # fast build rule for target.
-Prime/fast:
-	$(MAKE) -f src/CMakeFiles/Prime.dir/build.make src/CMakeFiles/Prime.dir/build
-.PHONY : Prime/fast
+src-Runner/fast:
+	$(MAKE) -f src/CMakeFiles/src-Runner.dir/build.make src/CMakeFiles/src-Runner.dir/build
+.PHONY : src-Runner/fast
 
 #=============================================================================
-# Target rules for targets named Recieve
+# Target rules for targets named src
 
 # Build rule for target.
-Recieve: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Recieve
-.PHONY : Recieve
+src: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 src
+.PHONY : src
 
 # fast build rule for target.
-Recieve/fast:
-	$(MAKE) -f src/CMakeFiles/Recieve.dir/build.make src/CMakeFiles/Recieve.dir/build
-.PHONY : Recieve/fast
-
-#=============================================================================
-# Target rules for targets named Send
-
-# Build rule for target.
-Send: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Send
-.PHONY : Send
-
-# fast build rule for target.
-Send/fast:
-	$(MAKE) -f src/CMakeFiles/Send.dir/build.make src/CMakeFiles/Send.dir/build
-.PHONY : Send/fast
+src/fast:
+	$(MAKE) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/build
+.PHONY : src/fast
 
 # Help Target
 help:
@@ -157,9 +144,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Prime"
-	@echo "... Recieve"
-	@echo "... Send"
+	@echo "... src-Runner"
+	@echo "... src"
 .PHONY : help
 
 

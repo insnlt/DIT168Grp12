@@ -3,6 +3,8 @@
 
 src/CMakeFiles/Prime.dir/Prime.cpp.o: ../src/Prime.cpp
 src/CMakeFiles/Prime.dir/Prime.cpp.o: ../src/PrimeChecker.hpp
+src/CMakeFiles/Prime.dir/Prime.cpp.o: ../src/Reciever.hpp
+src/CMakeFiles/Prime.dir/Prime.cpp.o: ../src/Sender.hpp
 
 src/CMakeFiles/Prime.dir/PrimeChecker.cpp.o: ../src/PrimeChecker.cpp
 src/CMakeFiles/Prime.dir/PrimeChecker.cpp.o: ../src/PrimeChecker.hpp

@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/insane/Desktop/project/DIT168Grp12/build/messages.cpp
+messages.hpp
+-
+
+/home/insane/Desktop/project/DIT168Grp12/src/PrimeChecker.cpp
+PrimeChecker.hpp
+/home/insane/Desktop/project/DIT168Grp12/src/PrimeChecker.hpp
+
+/home/insane/Desktop/project/DIT168Grp12/src/PrimeChecker.hpp
+cstdint
+-
+
+/home/insane/Desktop/project/DIT168Grp12/src/TestPrimeChecker.cpp
+catch.hpp
+/home/insane/Desktop/project/DIT168Grp12/src/catch.hpp
+PrimeChecker.hpp
+/home/insane/Desktop/project/DIT168Grp12/src/PrimeChecker.hpp
+
+messages.hpp
+cstdint
+-
+string
+-
+utility
+-
+cstdint
+-
+string
+-
+utility
+-
+string
+-
+utility
+-
+
