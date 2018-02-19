@@ -4,4 +4,4 @@ compiler: gcc
 
 install: make get-deps
 
-script: make
+script: ./configure && make && make test
