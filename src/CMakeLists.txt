@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
+
 project(dit)
+
 set(CMAKE_CXX_STANDARD 14)
 
 find_package(libcluon REQUIRED)
@@ -13,11 +15,11 @@ DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/messages.odvd)
 
 include_directories(SYSTEM ${CMAKE_BINARY_DIR})
 
-add_executable(Send ${CMAKE_CURRENT_SOURCE_DIR}/Sender.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
-target_link_libraries(Send ${CLUON_LIBRARIES})
+add_executable(${PROJECT_NAME}.Sender ${CMAKE_CURRENT_SOURCE_DIR}/Sender.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
+target_link_libraries(${PROJECT_NAME}.Sender ${CLUON_LIBRARIES})
 
-add_executable(Recieve ${CMAKE_CURRENT_SOURCE_DIR}/Reciever.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
-target_link_libraries(Recieve ${CLUON_LIBRARIES})
+add_executable(${PROJECT_NAME}.Receiver ${CMAKE_CURRENT_SOURCE_DIR}/Receiver.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
+target_link_libraries(${PROJECT_NAME}.Receiver ${CLUON_LIBRARIES})
 
 #enable_testing()
 #add_executable(${PROJECT_NAME}-Runner TestPrimeChecker.cpp ${CMAKE_CURRENT_SOURCE_DIR}/PrimeChecker.cpp ${CMAKE_BINARY_DIR}/messages.cpp)

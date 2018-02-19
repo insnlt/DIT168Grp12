@@ -5,7 +5,6 @@
 
 #include "cluon/OD4Session.hpp"
 #include "cluon/Envelope.hpp"
-#include "Reciever.hpp"
 #include "messages.hpp"
 
 int main(int /*argc*/, char** /*argv*/) {
