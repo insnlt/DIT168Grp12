@@ -1,5 +1,4 @@
-sudo:true
+sudo: true
 
-language: generic
+language: cpp
 
-script: make
