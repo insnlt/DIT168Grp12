@@ -1,4 +1,7 @@
 language: cpp
+
 compiler: gcc
+
+install: make get-deps
 
 script: make

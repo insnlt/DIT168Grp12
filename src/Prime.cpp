@@ -3,8 +3,7 @@
 #include "PrimeChecker.hpp"
 #include "cluon/UDPSender.hpp"
 #include "cluon/UDPReceiver.hpp"
-#include "Sender.hpp"
-#include "Reciever.hpp"
+
 int main(int /*argc*/, char** /*argv*/) {
     PrimeChecker pc;
     std::cout << "Hello World = " << pc.isPrime(43) << std::endl;
