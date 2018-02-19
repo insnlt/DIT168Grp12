@@ -1,0 +1,5 @@
+/home/insane/Desktop/DIT168Grp12-master/src/CMakeFiles/edit_cache.dir
+/home/insane/Desktop/DIT168Grp12-master/src/CMakeFiles/rebuild_cache.dir
+/home/insane/Desktop/DIT168Grp12-master/src/src/CMakeFiles/edit_cache.dir
+/home/insane/Desktop/DIT168Grp12-master/src/src/CMakeFiles/rebuild_cache.dir
+/home/insane/Desktop/DIT168Grp12-master/src/src/CMakeFiles/Prime.dir

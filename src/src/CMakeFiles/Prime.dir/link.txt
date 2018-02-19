@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/Prime.dir/Prime.cpp.o CMakeFiles/Prime.dir/PrimeChecker.cpp.o  -o Prime -rdynamic -lcluon -lpthread 
