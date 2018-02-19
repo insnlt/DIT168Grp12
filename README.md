@@ -1,5 +1,5 @@
 # DIT168 Industrial IT and Embedded Systems
-#Miniature Smart Vehicle
+# Miniature Smart Vehicle
 
 ##Introduction:
 In this project we will create a Smart Miniature Vehicle where the car will be able to drive autonomously.Vehicle should be able to drive autonomously while following the lanes, ability to follow and pass other vehicles and park the car in the parking space. The car is equipped with sensors in the front,back and the sides, we will also use a camera for tracking the lines of the road. Project will be written in C++ and C languages.
