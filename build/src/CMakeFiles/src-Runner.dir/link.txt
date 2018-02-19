@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/src-Runner.dir/TestPrimeChecker.cpp.o CMakeFiles/src-Runner.dir/PrimeChecker.cpp.o CMakeFiles/src-Runner.dir/__/messages.cpp.o  -o src-Runner -rdynamic -lcluon -lpthread 

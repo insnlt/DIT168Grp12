@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/Send.dir/Sender.cpp.o CMakeFiles/Send.dir/__/messages.cpp.o  -o Send -rdynamic -lcluon -lpthread 

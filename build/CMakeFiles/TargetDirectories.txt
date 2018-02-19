@@ -1,6 +1,0 @@
-/home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles/edit_cache.dir
-/home/insane/Desktop/project/DIT168Grp12/build/CMakeFiles/rebuild_cache.dir
-/home/insane/Desktop/project/DIT168Grp12/build/src/CMakeFiles/edit_cache.dir
-/home/insane/Desktop/project/DIT168Grp12/build/src/CMakeFiles/rebuild_cache.dir
-/home/insane/Desktop/project/DIT168Grp12/build/src/CMakeFiles/src-Runner.dir
-/home/insane/Desktop/project/DIT168Grp12/build/src/CMakeFiles/src.dir

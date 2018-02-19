@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/Recieve.dir/Reciever.cpp.o CMakeFiles/Recieve.dir/__/messages.cpp.o  -o Recieve -rdynamic -lcluon -lpthread 
