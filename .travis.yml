@@ -1,5 +1,5 @@
 sudo:true
 
-language: cpp
+language: generic
 
-install: make get-deps
+script: make
