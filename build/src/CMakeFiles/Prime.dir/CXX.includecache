@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/insane/Desktop/project/DIT168Grp12/src/Prime.cpp
+iostream
+-
+PrimeChecker.hpp
+/home/insane/Desktop/project/DIT168Grp12/src/PrimeChecker.hpp
+
+/home/insane/Desktop/project/DIT168Grp12/src/PrimeChecker.cpp
+PrimeChecker.hpp
+/home/insane/Desktop/project/DIT168Grp12/src/PrimeChecker.hpp
+
+/home/insane/Desktop/project/DIT168Grp12/src/PrimeChecker.hpp
+cstdint
+-
+
