@@ -2,6 +2,4 @@ language: cpp
 
 compiler: gcc
 
-script:
-	-cmake .
-	-cmake --build .
+script: "mkdir build && cd build && cmake .. && make"
