@@ -1,5 +1,5 @@
 before_install:
-	- sudo apt-get install libcluon
+     - sudo apt-get install libcluon
 
 language: cpp
 
