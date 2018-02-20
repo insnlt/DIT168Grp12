@@ -4,8 +4,6 @@ project(dit)
 
 set(CMAKE_CXX_STANDARD 14)
 
-find_package(libcluon REQUIRED)
-include_directories(SYSTEM ${CLUON_INCLUDE_DIRS})
 
 add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/messages.cpp
                    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
@@ -16,10 +14,10 @@ DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/messages.odvd)
 include_directories(SYSTEM ${CMAKE_BINARY_DIR})
 
 add_executable(${PROJECT_NAME}.Sender ${CMAKE_CURRENT_SOURCE_DIR}/Sender.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
-target_link_libraries(${PROJECT_NAME}.Sender ${CLUON_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}.Sender)
 
 add_executable(${PROJECT_NAME}.Receiver ${CMAKE_CURRENT_SOURCE_DIR}/Receiver.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
-target_link_libraries(${PROJECT_NAME}.Receiver ${CLUON_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}.Receiver)
 
 #enable_testing()
 #add_executable(${PROJECT_NAME}-Runner TestPrimeChecker.cpp ${CMAKE_CURRENT_SOURCE_DIR}/PrimeChecker.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
