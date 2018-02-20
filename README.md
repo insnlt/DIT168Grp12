@@ -25,8 +25,8 @@ $ make'
 ### Test:
 Go inside build>src, launch the terminal and enter the commands below.
 
-$ './dit.Sender'
+$ `./dit.Sender`
 
 Open another terminal:
 
-$ './dit.Receiver'
+$ `./dit.Receiver`
