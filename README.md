@@ -15,17 +15,17 @@ $ git clone https://github.com/insnlt/DIT168Grp12.git
 ### Building:
 Go into the project folder, launch the terminal and enter the commands below.
 
-$ mkdir build && cd build
+$ 'mkdir build && cd build'
 
-$ cmake ..
+$ 'cmake ..'
 
-$ make
+$ 'make'
 
 ### Test:
 Go inside build>src, launch the terminal and enter the commands below.
 
-$ ./dit.Sender
+$ './dit.Sender'
 
 Open another terminal:
 
-$ ./dit.Receiver
+$ './dit.Receiver'
