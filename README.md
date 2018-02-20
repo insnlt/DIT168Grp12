@@ -16,7 +16,9 @@ $ git clone https://github.com/insnlt/DIT168Grp12.git
 Go into the project folder, launch the terminal and enter the commands below.
 
 $ mkdir build && cd build
+
 $ cmake ..
+
 $ make
 
 ### Test:
