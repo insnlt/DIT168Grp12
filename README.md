@@ -2,6 +2,8 @@
 
 # Miniature Smart Vehicle
 
+https://github.com/insnlt/DIT168Grp12
+
 ## Introduction
 In this project we will create a Smart Miniature Vehicle where the car will be able to drive autonomously.The vehicle should be able to drive autonomously while following a lane , pass other vehicles and park. Also, the vehicle will be able to use vehicle to vehicle (V2V) technology. The car is equipped with sensors on the front, back and the sides, we will also use a camera for tracking the markings of the road. Project will be implemented using C/C++ languages and built upon [OpenDaVINCI](http://opendavinci.cse.chalmers.se/www/). The great amount of focus will be spent on testing and delivering high quality standards.
 
@@ -20,7 +22,7 @@ $ mkdir build && cd build
 
 $ cmake ..
 
-$ make'
+$ make
 ```
 ### Test:
 Go inside build>src, launch the terminal and enter the commands below.
