@@ -14,6 +14,7 @@ We are using Docker for distributing and releasing binaries for the software. To
 ### Saving as .tar and loading
 
 `$ sudo docker save dit > dit168grp12.dit.tar`
+
 `$ cat dit168grp12.dit.tar | docker load`
 
 
@@ -24,5 +25,6 @@ To run docker image you should run the following command:
 
 ## Demo:
 `$ sudo docker run --rm -ti --net=host insnlt/dit168grp12 /opt/dit.Sender`
+
 `$ sudo docker run --rm -ti --net=host insnlt/dit168grp12 /opt/dit.Receiver`
 
