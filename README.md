@@ -32,3 +32,28 @@ $ `./dit.Sender`
 Open another terminal:
 
 $ `./dit.Receiver`
+
+## HOW TO PACKAGE AND RELEASE BINARIES OF THIS SOFTWARE
+
+### Package:
+We are using Docker for distributing and releasing binaries for the software. To build the project locally you must run this command:
+
+`$ docker build -t dit168grp12.dit -f Dockerfile .`
+
+### Saving as .tar and loading
+
+`$ docker save dit > dit168grp12.dit.tar`
+
+`$ cat dit168grp12.dit.tar | docker load`
+
+
+### Pulling:
+To run docker image you should run the following command:
+
+`$ docker pull insnlt/dit168grp12`
+
+## Demo:
+`$ docker run --rm -ti --net=host insnlt/dit168grp12 /opt/dit.Sender`
+
+`$ docker run --rm -ti --net=host insnlt/dit168grp12 /opt/dit.Receiver`
+
