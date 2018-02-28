@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/insnlt/DIT168Grp12.svg?branch=master)](https://travis-ci.org/insnlt/DIT168Grp12)
+
 # DIT168 Industrial IT and Embedded Systems
 
 # Miniature Smart Vehicle
