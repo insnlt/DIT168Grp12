@@ -129,11 +129,18 @@ V2VService::V2VService() {
                    }
                    case LEADER_STATUS: {
                        LeaderStatus leaderStatus = decode<LeaderStatus>(msg.second);
-                       std::cout << "received '" << leaderStatus.LongName()
-                                 << "' from '" << sender << "'!" << std::endl;
-		       std::cout << "Speed = " << unsigned(leaderStatus.speed()) << std::endl;
 
                        /* TODO: implement follow logic */
+		
+			cluon::OD4Session od4(111,[](cluon::data::Envelope &&envelope) noexcept {
+		        if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
+     opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
+	            std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
+	        }
+	        else if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {		           	 opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
+	            std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
+        }
+    });
 
                        break;
                    }
