@@ -51,6 +51,7 @@ private:
     std::shared_ptr<cluon::UDPReceiver> incoming;
     std::shared_ptr<cluon::UDPSender>   toLeader;
     std::shared_ptr<cluon::UDPSender>   toFollower;
+    std::shared_ptr<cluon::OD4Session>  internalService;
 
     static uint32_t getTime();
     static std::pair<int16_t, std::string> extract(std::string data);

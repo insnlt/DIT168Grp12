@@ -134,11 +134,12 @@ V2VService::V2VService() {
 		
 			cluon::OD4Session od4(111,[](cluon::data::Envelope &&envelope) noexcept {
 		        if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
-     opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
-	            std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
+     			opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
+	            	std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
 	        }
-	        else if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {		           	 opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
-	            std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
+	        	else if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
+			opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
+	            	std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
         }
     });
 
@@ -147,6 +148,19 @@ V2VService::V2VService() {
                    default: std::cout << "¯\\_(ツ)_/¯" << std::endl;
                }
            });
+
+
+
+	internalService = std::make_shared<cluon::OD4Session>(CID,[this](cluon::data::Envelope && evelope) noexpect{ //undecided CID
+			switch(envelope.dataType()){
+				case (angle id): {
+				
+				}
+				case (speed id): {
+				
+				}		
+			}
+});
 }
 
 /**
