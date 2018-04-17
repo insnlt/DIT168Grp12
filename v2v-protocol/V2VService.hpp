@@ -13,8 +13,8 @@
 
 /** ADD YOUR CAR_IP AND GROUP_ID HERE:  *****************/
 
-static const std::string YOUR_CAR_IP    = "192.168.1.107";
-static const std::string YOUR_GROUP_ID  = "12";
+static const std::string YOUR_CAR_IP    = "192.168.43.25";
+static const std::string YOUR_GROUP_ID  = "13";
 
 /********************************************************/
 /** DON'T CHANGE STUFF BELOW THIS LINE. *****************/
@@ -42,7 +42,7 @@ public:
     void stopFollow(std::string vehicleIp);
     void leaderStatus(float speed, float steeringAngle, uint8_t distanceTraveled);
     void followerStatus();
-
+    
 private:
     std::string leaderIp;
     std::string followerIp;
@@ -51,7 +51,7 @@ private:
     std::shared_ptr<cluon::UDPReceiver> incoming;
     std::shared_ptr<cluon::UDPSender>   toLeader;
     std::shared_ptr<cluon::UDPSender>   toFollower;
-    std::shared_ptr<cluon::OD4Session>  internalService;
+  //  std::shared_ptr<cluon::OD4Session>  internalService;
 
     static uint32_t getTime();
     static std::pair<int16_t, std::string> extract(std::string data);

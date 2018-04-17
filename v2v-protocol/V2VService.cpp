@@ -1,5 +1,6 @@
 #include "V2VService.hpp"
 
+
 int main() {
     std::shared_ptr<V2VService> v2vService = std::make_shared<V2VService>();
 
@@ -36,7 +37,32 @@ int main() {
                 else std::cout << "Sorry, unable to locate that groups vehicle!" << std::endl;
                 break;
             }
-            case 5: v2vService->leaderStatus(50, 0, 100); break;
+            //case 5: while(1){v2vService->leaderStatus(50, 0, 100);} break;
+            case 5: {
+            while(1){  
+            cluon::OD4Session od4(111,[&v2vService](cluon::data::Envelope &&envelope) noexcept {
+                          float speed;
+                          float angle;
+
+                          if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
+                        opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
+                              std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
+                              opendlv::proxy::GroundSteeringReading leaderSteerAngle;
+                              leaderSteerAngle.steeringAngle(receivedMsg.steeringAngle());
+                              angle = receivedMsg.steeringAngle();
+                        }
+                          else if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
+                    opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
+                              std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
+                              opendlv::proxy::PedalPositionReading leaderSteerSpeed;
+                              leaderSteerSpeed.percent(receivedMsg.percent());
+                              speed = receivedMsg.percent();
+                      }
+                      v2vService->leaderStatus(speed,angle,100);
+                  });
+                  break;            
+                  }
+                }
             case 6: v2vService->followerStatus(); break;
             default: exit(0);
         }
@@ -131,17 +157,34 @@ V2VService::V2VService() {
                        LeaderStatus leaderStatus = decode<LeaderStatus>(msg.second);
 
                        /* TODO: implement follow logic */
+                       std::cout << "received speed:'" << leaderStatus.speed()
+                                 << "' from '" << sender << "'!" << std::endl;
+                       std::cout << "received angle:'" << leaderStatus.steeringAngle()
+                                 << "' from '" << sender << "'!" << std::endl;
+
+                       opendlv::proxy::GroundSteeringReading followSteerAngle;
+                       followSteerAngle.steeringAngle(leaderStatus.steeringAngle());
+                       opendlv::proxy::PedalPositionReading followSpeed;
+                       followSpeed.percent(leaderStatus.speed());
+
+
+                                 
 		
-			cluon::OD4Session od4(111,[](cluon::data::Envelope &&envelope) noexcept {
-		        if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
-     			opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
-	            	std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
-	        }
-	        	else if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
-			opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
-	            	std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
-        }
-    });
+              			// cluon::OD4Session od4(111,[](cluon::data::Envelope &&envelope) noexcept {
+              		 //        if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
+                 //   			opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
+              	  //           	std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
+                 //              opendlv::proxy::GroundSteeringReading leaderSteerAngle;
+                 //              leaderSteerAngle.steeringAngle(receivedMsg.steeringAngle());
+              	  //       }
+              	  //       	else if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
+              			// opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
+              	  //           	std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
+                 //              opendlv::proxy::PedalPositionReading leaderSteerSpeed;
+                 //              leaderSteerSpeed.percent(receivedMsg.percent());
+                 //      }
+                 //      V2VService.leaderStatus(receivedMsg.percent(),receivedMsg.steeringAngle(),100);
+                 //  });
 
                        break;
                    }
@@ -149,19 +192,19 @@ V2VService::V2VService() {
                }
            });
 
-
-
-	internalService = std::make_shared<cluon::OD4Session>(CID,[this](cluon::data::Envelope && evelope) noexpect{ //undecided CID
-			switch(envelope.dataType()){
-				case (angle id): {
-				
-				}
-				case (speed id): {
-				
-				}		
-			}
-});
 }
+
+// 	internalService = std::make_shared<cluon::OD4Session>(CID,[this](cluon::data::Envelope && evelope) noexpect{ //undecided CID
+// 			switch(envelope.dataType()){
+// 				case (angle id): {
+				
+// 				}
+// 				case (speed id): {
+				
+// 				}		
+// 			}
+// });
+// }
 
 /**
  * This function sends an AnnouncePresence (id = 1001) message on the broadcast channel. It will contain information

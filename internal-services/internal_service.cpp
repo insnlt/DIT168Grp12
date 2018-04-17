@@ -6,6 +6,7 @@ int main() {
 }
 
 internal_service::controllerService(){
+
 	sendMessage = std::make_shared<cluon::OD4Session>(V2VCID,[this](cluon::data::Envelope && envelope) noexpect {
 	std::cout << "OD4 Session" << std::endl;
 
@@ -43,13 +44,15 @@ internal_service::controllerService(){
 		Speed sp = cluon::extractMessage<Speed>(std::move(envelope));
 		std::cout<< "Recieved Speed from Leader :" << sp.speed() << std::endl;
 		break;
-	}
+		}
 		case RECEIVED_ANGLE: {
 		steeringAngle angle = cluon::extractMessage<steeringAngle>(std::move(envelope));
 		std::cout<< "Recieved Angle from Leader :" << angle.steeringAngle() << std::endl;
 		break;		
-	}
+		}
 		default: std::cout<< "FAULTY CASE IN RECEIVED" << envelope.dataType() <<std::endl;
 
+	}
 }); 
-}
+
+

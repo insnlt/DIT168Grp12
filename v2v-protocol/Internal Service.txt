@@ -1,0 +1,15 @@
+Internal Service
+
+1.Sending as Leader
+
+
+2.Receiving as a Follower
+
+
+3.Sensors
+
+
+4.PS4
+
+
+5.Web Service

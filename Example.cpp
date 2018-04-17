@@ -15,14 +15,14 @@ bool quit = false;
 
 int main(int /*argc*/, char** /*argv*/) {
 	// creates od4 - 111 and receives data 
-    cluon::OD4Session od4(222,[](cluon::data::Envelope &&envelope) noexcept {
+    cluon::OD4Session od4(111,[](cluon::data::Envelope &&envelope) noexcept {
         if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
-            opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
-            std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
+         //   opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
+           // std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
         }
         else if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
-            opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
-            std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
+          //  opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
+            // std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
         }
     });
 
