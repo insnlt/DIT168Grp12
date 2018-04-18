@@ -6,6 +6,10 @@ message opendlv.proxy.PedalPositionReading [id = 1041] {
 	float percent [id = 1];
 } 
 
+message ultraSonicFront [id = 4002] {
+	uint8 ultraSoundReading [id =1];
+}
+
 // V2V protocol
 message AnnouncePresence [id = 1001] {
   string vehicleIp [id = 1];
