@@ -25,6 +25,9 @@ class internal_service{
 	private:
 		std::shared_ptr<cluon::OD4Session> receivedMessage;
 		std::shared_ptr<cluon::OD4Session> sendMessage;
+		opendlv::proxy::GroundSteeringReading steering;
+		opendlv::proxy::PedalPositionReading Speed;
+
 };
 
 #endif 

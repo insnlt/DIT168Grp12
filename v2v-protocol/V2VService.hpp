@@ -13,8 +13,8 @@
 
 /** ADD YOUR CAR_IP AND GROUP_ID HERE:  *****************/
 
-static const std::string YOUR_CAR_IP    = "192.168.43.25";
-static const std::string YOUR_GROUP_ID  = "13";
+static const std::string YOUR_CAR_IP    = "192.168.43.248";
+static const std::string YOUR_GROUP_ID  = "1";
 
 /********************************************************/
 /** DON'T CHANGE STUFF BELOW THIS LINE. *****************/
@@ -22,6 +22,7 @@ static const std::string YOUR_GROUP_ID  = "13";
 
 static const int BROADCAST_CHANNEL = 250;
 static const int DEFAULT_PORT = 50001;
+static const int INTERNAL_CHANNEL = 230;
 
 static const int ANNOUNCE_PRESENCE = 1001;
 static const int FOLLOW_REQUEST = 1002;
@@ -33,7 +34,7 @@ static const int FOLLOWER_STATUS = 3001;
 class V2VService {
 public:
     std::map <std::string, std::string> presentCars;
-
+   
     V2VService();
 
     void announcePresence();
@@ -51,7 +52,8 @@ private:
     std::shared_ptr<cluon::UDPReceiver> incoming;
     std::shared_ptr<cluon::UDPSender>   toLeader;
     std::shared_ptr<cluon::UDPSender>   toFollower;
-  //  std::shared_ptr<cluon::OD4Session>  internalService;
+    
+    std::shared_ptr<cluon::OD4Session>  internalService;
 
     static uint32_t getTime();
     static std::pair<int16_t, std::string> extract(std::string data);
