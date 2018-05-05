@@ -10,11 +10,12 @@
 #include "cluon/Envelope.hpp"
 #include "Messages.hpp"
 #include <iostream>
+#include <queue>
 
 /** ADD YOUR CAR_IP AND GROUP_ID HERE:  *****************/
 
-static const std::string YOUR_CAR_IP    = "192.168.43.248";
-static const std::string YOUR_GROUP_ID  = "1";
+static const std::string YOUR_CAR_IP    = "192.168.43.212";
+static const std::string YOUR_GROUP_ID  = "12";
 
 /********************************************************/
 /** DON'T CHANGE STUFF BELOW THIS LINE. *****************/
@@ -30,13 +31,20 @@ static const int FOLLOW_RESPONSE = 1003;
 static const int STOP_FOLLOW = 1004;
 static const int LEADER_STATUS = 2001;
 static const int FOLLOWER_STATUS = 3001;
+static const int DELAY_ANGLE = 8 ;
+
+static float PEDAL_SPEED;
+static float GROUND_STEERING;
+
 
 class V2VService {
 public:
     std::map <std::string, std::string> presentCars;
+
+    std::queue<float> angleQueue;
    
     V2VService();
-
+    void carQueue(LeaderStatus leaderStatus);
     void announcePresence();
     void followRequest(std::string vehicleIp);
     void followResponse();
@@ -48,6 +56,7 @@ private:
     std::string leaderIp;
     std::string followerIp;
 
+    std::shared_ptr<cluon::OD4Session>  movement;
     std::shared_ptr<cluon::OD4Session>  broadcast;
     std::shared_ptr<cluon::UDPReceiver> incoming;
     std::shared_ptr<cluon::UDPSender>   toLeader;

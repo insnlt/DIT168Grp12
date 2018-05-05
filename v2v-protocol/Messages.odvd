@@ -10,6 +10,10 @@ message ultraSonicFront [id = 4002] {
 	uint8 ultraSoundReading [id =1];
 }
 
+message IMU [id = 5000]{
+	uint8 Distance [id = 1];
+}
+
 // V2V protocol
 message AnnouncePresence [id = 1001] {
   string vehicleIp [id = 1];

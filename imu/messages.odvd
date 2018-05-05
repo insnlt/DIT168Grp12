@@ -1,0 +1,3 @@
+message readIMU [id = 5000] {
+	uint8 readDistance [id = 1];
+}
