@@ -59,10 +59,8 @@ int main() {
             while(1){ 
                       std::cout<<"Sending Speed to Follower: " << PEDAL_SPEED << std::endl;
                       std::cout<<"Sending Angle to Follower: " << GROUND_STEERING << std::endl;
-                      v2vService->leaderStatus(PEDAL_SPEED,GROUND_STEERING,0);
-                      //std::this_thread::sleep_for(std::chrono::milliseconds(125));		      
+                      v2vService->leaderStatus(PEDAL_SPEED,GROUND_STEERING,0);	      
 			                usleep(125000);  
-                      //internalService->leaderStatus(speed,angle,100);
                     }
                   break;
                 }
@@ -82,14 +80,14 @@ V2VService::V2VService() {
      */
     movement = 
       std::make_shared<cluon::OD4Session>(230, [this](cluon::data::Envelope &&envelope) noexcept {
-                            if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
-                                opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
-                                GROUND_STEERING = receivedMsg.steeringAngle();
-                          }
-                            if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
-                                opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
-                                PEDAL_SPEED = receivedMsg.percent();
-                          }
+            if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
+                    opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
+                    GROUND_STEERING = receivedMsg.steeringAngle();
+                }
+            if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
+                    opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
+                    PEDAL_SPEED = receivedMsg.percent();
+                 }
     });
 
     broadcast =
@@ -143,17 +141,6 @@ V2VService::V2VService() {
            [this](std::string &&data, std::string &&sender, std::chrono::system_clock::time_point &&ts) noexcept {
                std::cout << "[UDP] ";
                std::pair<int16_t, std::string> msg = extract(data);
-    
-        // cluon::OD4Session od4(230,[](cluon::data::Envelope &&envelope) noexcept {
-        //     if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
-        //         opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
-        //         std::cout << "received a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
-        //     }
-        //     else if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
-        //         opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
-        //          std::cout << "received a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
-        //     }
-        // });
 
                switch (msg.first) {
                    case FOLLOW_REQUEST: {
@@ -211,14 +198,7 @@ V2VService::V2VService() {
                        std::cout << "Received angle from Leader:'" << leaderStatus.steeringAngle()
                                  << "' from '" << sender << "'!" << std::endl;
 
-              
-                    //   carSteering.steeringAngle(leaderStatus.steeringAngle());
-                     //  carSpeed.percent(leaderStatus.speed());
-                      // od4.send(carSteering); 
-                      // od4.send(carSpeed);
-                     //  movement->send(carSpeed);
                        carQueue(leaderStatus);
-               //      internalService->send(leaderStatus);
                        break;
                    }
                    default: std::cout << "¯\\_(ツ)_/¯" << std::endl;
@@ -227,17 +207,7 @@ V2VService::V2VService() {
 
 }
 
-// 	internalService = std::make_shared<cluon::OD4Session>(CID,[this](cluon::data::Envelope && evelope) noexpect{ //undecided CID
-// 			switch(envelope.dataType()){
-// 				case (angle id): {
-				
-// 				}
-// 				case (speed id): {
-				
-// 				}		
-// 			}
-// });
-// }
+
 void V2VService::carQueue(LeaderStatus leaderStatus){
     if(leaderStatus.speed() !=0 && angleQueue.size() >= DELAY_ANGLE){
       angleQueue.push(leaderStatus.steeringAngle());
