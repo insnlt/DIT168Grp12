@@ -66,12 +66,4 @@ services:
   #     depends_on:
    #    - proxy-miniature-pwm-motor
     #   network_mode: "host"
-     #  command: "/opt/V2V.Service --cid=230 --freq=10"
-    
-#    device-ultrasonic-srf08-rear:
- #       image: chalmersrevere/opendlv-device-ultrasonic-srf08-armhf:v0.0.6
-  #      network_mode: "host"
-   #     privileged: true
-    #    volumes:
-     #     - /dev/i2c-1:/dev/i2c-1
-      #  command: "/usr/bin/opendlv-device-ultrasonic-srf08 --dev=/dev/i2c-1 --bus-address=112 --cid=111 --verbose=1 --freq=5 --id=1"
+     #  command: "/opt/V2V.Service --cid=232 --freq=10"

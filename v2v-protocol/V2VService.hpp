@@ -31,7 +31,7 @@ static const int FOLLOW_RESPONSE = 1003;
 static const int STOP_FOLLOW = 1004;
 static const int LEADER_STATUS = 2001;
 static const int FOLLOWER_STATUS = 3001;
-static const int DELAY_ANGLE = 8 ;
+static const int DELAY_ANGLE = 12 ;
 
 static float PEDAL_SPEED;
 static float GROUND_STEERING;

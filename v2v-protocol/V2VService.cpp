@@ -79,15 +79,15 @@ V2VService::V2VService() {
      * AnnouncePresence messages will be received.
      */
     movement = 
-      std::make_shared<cluon::OD4Session>(230, [this](cluon::data::Envelope &&envelope) noexcept {
+      std::make_shared<cluon::OD4Session>(INTERNAL_CHANNEL, [this](cluon::data::Envelope &&envelope) noexcept {
             if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
-                    opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
-                    GROUND_STEERING = receivedMsg.steeringAngle();
-                }
+            opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
+            GROUND_STEERING = receivedMsg.steeringAngle();
+            }
             if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
-                    opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
-                    PEDAL_SPEED = receivedMsg.percent();
-                 }
+            opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
+            PEDAL_SPEED = receivedMsg.percent();
+            }
     });
 
     broadcast =
@@ -120,13 +120,13 @@ V2VService::V2VService() {
 		                LeaderStatus leaderStatus = cluon::extractMessage <LeaderStatus>(std::move(envelope));
 		              }
                else if(envelope.dataType()==1002){
-                    FollowRequest followRequest = decode<FollowRequest>(msg.second);
+                    FollowRequest followRequest = cluon::extractMessage <FollowRequest>(std::move(envelope));
                }
                else if(envelope.dataType()==1003){
-                    FollowResponse followResponse = decode<FollowResponse>(msg.second);
+                    FollowResponse followResponse = cluon::extractMessage <FollowRequest>(std::move(envelope));
                }
                else if(envelope.dataType()==1004){
-                    StopFollow stopFollow = decode<StopFollow>(msg.second);
+                    StopFollow stopFollow = cluon::extractMessage <StopFollow>(std::move(envelope));
                }
 
         });

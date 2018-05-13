@@ -31,7 +31,7 @@ int main() {
     	cluon::OD4Session od4(230,[](cluon::data::Envelope &&envelope) noexcept {
                               if (envelope.dataType() == 5000) {
                                   readIMU readmsg = cluon::extractMessage<readIMU>(std::move(envelope));
-				 // std::cout << "message" << readmsg.readDistance() << std::endl;
+				 				// std::cout << "message" << readmsg.readDistance() << std::endl;
                               }
                           });
 
@@ -56,16 +56,15 @@ int main() {
     	}
 	
 	while (od4.isRunning()) {
-
         	while (rc_get_state() != EXITING) {
-			
+
 			if(rc_read_accel_data(&data)<0){
 			std::cout << "read failed" << std::endl;
 			}
-			//std::cout <<"time" << std::chrono::duration_cast<std::chrono::microseconds>(previousTime - currentTime).count() << std::endl;
+			
         		float x_accel = data.accel[1];
         		float y_accel = data.accel[2];
-			//std::cout << "X" << y_accel << std::endl;
+			//std::cout << "Y-axis: " << y_accel << std::endl;
 			float accel = pow(x_accel,2)+pow(y_accel,2);
 			accel = sqrt(accel);
 			std::cout << "accel" << accel <<std::endl;
