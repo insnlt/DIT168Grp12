@@ -135,7 +135,7 @@ V2VService::V2VService() {
                     FollowRequest followRequest = cluon::extractMessage <FollowRequest>(std::move(envelope));
                }
                else if(envelope.dataType()==1003){
-                    FollowResponse followResponse = cluon::extractMessage <FollowRequest>(std::move(envelope));
+                    FollowResponse followResponse = cluon::extractMessage <FollowResponse>(std::move(envelope));
                }
                else if(envelope.dataType()==1004){
                     StopFollow stopFollow = cluon::extractMessage <StopFollow>(std::move(envelope));
