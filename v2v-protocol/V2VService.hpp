@@ -1,3 +1,7 @@
+/*
+* @authors- Andrius Sakalas, Margit Saal, Karanveer Singh
+* Group - 12
+*/
 #ifndef V2V_PROTOCOL_DEMO_V2VSERVICE_H
 #define V2V_PROTOCOL_DEMO_V2VSERVICE_H
 
@@ -23,7 +27,7 @@ static const std::string YOUR_GROUP_ID  = "12";
 
 static const int BROADCAST_CHANNEL = 250;
 static const int DEFAULT_PORT = 50001;
-static const int INTERNAL_CHANNEL = 230;
+static const int INTERNAL_CHANNEL = 230;    // Group - 12 CID
 
 static const int ANNOUNCE_PRESENCE = 1001;
 static const int FOLLOW_REQUEST = 1002;
