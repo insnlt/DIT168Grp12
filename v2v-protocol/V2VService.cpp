@@ -1,7 +1,11 @@
+/*
+* @authors- Andrius Sakalas, Margit Saal, Karanveer Singh
+* Group - 12
+*/
 #include "V2VService.hpp"
 #include <pthread.h>
 #include <iostream>
-
+// Global Variables
 opendlv::proxy::GroundSteeringReading carSteering;
 opendlv::proxy::PedalPositionReading carSpeed;
 
@@ -9,16 +13,18 @@ opendlv::proxy::PedalPositionReading carSpeed;
 int main() {
 
     std::shared_ptr<V2VService> v2vService = std::make_shared<V2VService>();
-                cluon::OD4Session od4(230,[](cluon::data::Envelope &&envelope) noexcept {
-                          if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
-                              opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
-                              GROUND_STEERING = receivedMsg.steeringAngle();
-                        }
-                          if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
-                              opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
-                              PEDAL_SPEED = receivedMsg.percent();
-                        }
-	});
+
+    // Getting values from the PS4 Controller 
+    cluon::OD4Session od4(230,[](cluon::data::Envelope &&envelope) noexcept {
+        if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
+            opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
+            GROUND_STEERING = receivedMsg.steeringAngle();
+          }
+        if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
+            opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
+            PEDAL_SPEED = receivedMsg.percent();
+          }
+	   });
     
 
     while (1) {
@@ -55,12 +61,10 @@ int main() {
                 else std::cout << "Sorry, unable to locate that groups vehicle!" << std::endl;
                 break;
             }
-            case 5: { // Sending stuff to Follower   
+            case 5: { // Sending Leader Status Values to Follower Car   
             while(1){ 
-                      std::cout<<"Sending Speed to Follower: " << PEDAL_SPEED << std::endl;
-                      std::cout<<"Sending Angle to Follower: " << GROUND_STEERING << std::endl;
-                      v2vService->leaderStatus(PEDAL_SPEED,GROUND_STEERING,0);	      
-			                usleep(125000);  
+                      v2vService->leaderStatus(PEDAL_SPEED,GROUND_STEERING,100);	      
+			                usleep(125000);  // Sending leader status every 125ms
                     }
                   break;
                 }
@@ -75,8 +79,8 @@ int main() {
  */
 V2VService::V2VService() {
     /*
-     * The broadcast field contains a reference to the broadcast channel which is an OD4Session. This is where
-     * AnnouncePresence messages will be received.
+     * The movement field contains a reference to the internal channel which is an OD4Session. This is where
+     * car speed and steering angle will be broadcasted to the motors.
      */
     movement = 
       std::make_shared<cluon::OD4Session>(INTERNAL_CHANNEL, [this](cluon::data::Envelope &&envelope) noexcept {
@@ -90,6 +94,10 @@ V2VService::V2VService() {
             }
     });
 
+    /*
+     * The broadcast field contains a reference to the broadcast channel which is an OD4Session. This is where
+     * AnnouncePresence messages will be received.
+     */
     broadcast =
         std::make_shared<cluon::OD4Session>(BROADCAST_CHANNEL,
           [this](cluon::data::Envelope &&envelope) noexcept {
@@ -109,6 +117,10 @@ V2VService::V2VService() {
               }
           });
 
+    /*
+     * The internalService field contains a reference to the internal channel which is an OD4Session. This is where
+     * we redirect the V2V protocol messages to the web signal viewer.
+     */
       internalService = 
         std::make_shared<cluon::OD4Session>(INTERNAL_CHANNEL,[this](cluon::data::Envelope &&envelope) noexcept {
             // internal service
@@ -130,7 +142,6 @@ V2VService::V2VService() {
                }
 
         });
-
 
     /*
      * Each car declares an incoming UDPReceiver for messages directed at them specifically. This is where messages
@@ -184,21 +195,17 @@ V2VService::V2VService() {
                        FollowerStatus followerStatus = decode<FollowerStatus>(msg.second);
                        std::cout << "received '" << followerStatus.LongName()
                                  << "' from '" << sender << "'!" << std::endl;
-
-                       /* TODO: implement lead logic (if applicable) */
-
                        break;
                    }
                    case LEADER_STATUS: {
                        LeaderStatus leaderStatus = decode<LeaderStatus>(msg.second);
 
-                       /* TODO: implement follow logic */
                        std::cout << "Received speed from Leader:'" << leaderStatus.speed()
                                  << "' from '" << sender << "'!" << std::endl;
                        std::cout << "Received angle from Leader:'" << leaderStatus.steeringAngle()
                                  << "' from '" << sender << "'!" << std::endl;
 
-                       carQueue(leaderStatus);
+                       carQueue(leaderStatus);    // Sends leaderStatus to the Car Queue
                        break;
                    }
                    default: std::cout << "¯\\_(ツ)_/¯" << std::endl;
@@ -209,18 +216,18 @@ V2VService::V2VService() {
 
 
 void V2VService::carQueue(LeaderStatus leaderStatus){
-    if(leaderStatus.speed() !=0 && angleQueue.size() >= DELAY_ANGLE){
-      angleQueue.push(leaderStatus.steeringAngle());
-      carSpeed.percent(leaderStatus.speed());
-      carSteering.steeringAngle(angleQueue.front());
-      movement->send(carSpeed);
-      movement->send(carSteering);
-      angleQueue.pop();
-    } else if(leaderStatus.speed() != 0) { 
-      carSpeed.percent(leaderStatus.speed());
-      angleQueue.push(leaderStatus.steeringAngle());
-      movement->send(carSpeed);
-    } else {
+    if(leaderStatus.speed() !=0 && angleQueue.size() >= DELAY_ANGLE){     // Checks if the leader car is moving and certain amount of messages are delayed
+      angleQueue.push(leaderStatus.steeringAngle());      // Push leader car's steering angle to the Queue
+      carSpeed.percent(leaderStatus.speed());             // Set speed equal to leader car's speed
+      carSteering.steeringAngle(angleQueue.front());      // Set steering angle to the first value in the Queue
+      movement->send(carSpeed);                           // Send speed to the motors
+      movement->send(carSteering);                        // Send angle to the motors
+      angleQueue.pop();                                   // Pop the Queue
+    } else if(leaderStatus.speed() != 0) {                //Checks if the leader car is moving but the delay is not sufficient 
+      carSpeed.percent(leaderStatus.speed());           
+      angleQueue.push(leaderStatus.steeringAngle());      // Add Steering angle to the Queue
+      movement->send(carSpeed);                           // Sends speed to motors equal to the leader speed
+    } else {          // If the leader is not movivng, we set the steering angle and speed to zero and dont add anything in the Queue.
       carSpeed.percent(0);
       carSteering.steeringAngle(0);
       movement->send(carSpeed);
@@ -238,7 +245,7 @@ void V2VService::announcePresence() {
     announcePresence.vehicleIp(YOUR_CAR_IP);
     announcePresence.groupId(YOUR_GROUP_ID);
     broadcast->send(announcePresence);
-    internalService->send(announcePresence);
+    internalService->send(announcePresence);    // Sends announce presence to the internal service 
 }
 
 /**
@@ -318,10 +325,7 @@ void V2VService::leaderStatus(float speed,float steeringAngle, uint8_t distanceT
     leaderStatus.steeringAngle(GROUND_STEERING);
     leaderStatus.distanceTraveled(distanceTraveled);
     toFollower->send(encode(leaderStatus));
-    std::cout << "$ LEADER STATUS SENDING SPEED VALUE:" << leaderStatus.speed() << std::endl;
-    std::cout << "$ LEADER STATUS SENDING ANGLE VALUE:" << leaderStatus.steeringAngle() << std::endl;
- //   toFollower->send(encode(leaderStatus));
-    internalService->send(leaderStatus);
+    internalService->send(leaderStatus);    // Sends Leader Status values to the internal service
 }
 
 /**

@@ -1,3 +1,6 @@
+/*
+* This module was developed by Group-13 and the code was modified according to our needs.
+*/
 #include <cstdint>
 #include <chrono>
 #include <iostream>
@@ -21,6 +24,7 @@ int main() {
 	opendlv::proxy::GroundSteeringReading carSteering;
   float sensor;
 
+  // An OD4 session for getting sensor readings 
   cluon::OD4Session sensorValues(231,[&sensor](cluon::data::Envelope &&envelope) noexcept {
           
         if (envelope.dataType() == opendlv::proxy::DistanceReading::ID()) {
@@ -31,8 +35,9 @@ int main() {
     });
 
   while(1){
+        // An OD4 session for getting Car steering angle and speed values
         cluon::OD4Session controller(232,[&steer,&speed](cluon::data::Envelope &&envelope) noexcept {
-        // Getting msgs from v2v or ps4
+        // Getting messages from V2V or PS4
         if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
             opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
             std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
@@ -42,30 +47,28 @@ int main() {
             opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
             std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
             speed=receivedMsg.percent();
+            
             if(speed > 0.16){
               speed=0.17;
-             }
+            }
         }
     });
 
-    std::cout << "Pre-IF steer: "<< steer  << " Pre-IF pedal: "<< speed << "Sensor check: " << sensor << std::endl;
-
+  // If the sensors detects an object while moving, we change the speed to zero
     if ((sensor < minDistance) && (speed > velocity)){
-            carSpeed.percent(0);
-            movement.send(carSpeed);
-            carSteering.steeringAngle(steer);
-            std::this_thread::sleep_for(std::chrono::milliseconds(2));
-            std::cout << "Sent angle:"<< carSteering.steeringAngle()  << " Sent zero:"<< carSpeed.percent()<< std::endl;
-            movement.send(carSteering);
-      } else {
-            carSpeed.percent(speed);
-            movement.send(carSpeed);
-            carSteering.steeringAngle(steer);
-            std::this_thread::sleep_for(std::chrono::milliseconds(2));
-            std::cout << "Sent angle:" <<carSteering.steeringAngle() << " Sent pedal "<< carSpeed.percent() << std::endl;
-            movement.send(carSteering);
-      }
-
+        carSpeed.percent(0);
+        movement.send(carSpeed);
+        carSteering.steeringAngle(steer);
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+        movement.send(carSteering);
+    } else {
+        carSpeed.percent(speed);
+        movement.send(carSpeed);
+        carSteering.steeringAngle(steer);
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+        movement.send(carSteering);
+        }
     }
+
     return 0;
 }
